@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="slider">
+            <div id="slide">
+            </div>
+        </div>
+    </div>
+</body>
+
+<style>
+    html,
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        background: #ddd;
+    }
+
+    .wrapper {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slider {
+        width: 1000px;
+        height: 100px;
+        position: relative;
+        background: white;
+        box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        overflow: hidden;
+    }
+
+    .slide {
+        height: 100px;
+        display: flex;
+        align-items: center;
+        animation: slideshow 8s linear infinite;
+    }
+
+    .slide img {
+        height: 70px;
+        padding: 0 30px 0 30px;
+    }
+
+    @keyframes slideshow {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    .slider::before,
+    .slider::after {
+        height: 100px;
+        width: 200px;
+        position: absolute;
+        content: "";
+        background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+        z-index: 2;
+    }
+
+    .slider::before {
+        left: 0;
+        top: 0;
+    }
+
+    .slider::after {
+        right: 0;
+        top: 0;
+        transform: rotateZ(180deg);
+    }
+</style>
+
+<script>
+    var partners = [
+        {
+            name: "Fundacja Rozwoju Systemu Edukacji",
+            logoUrl: "https://www.esn.pl/sites/default/files/styles/partner_page/public/partners/images/logo_frse_kontra_granatowe.jpg?itok=D7bYg5uY",
+            link: "https://www.esn.pl/en/partners/fundacja-rozwoju-systemu-edukacji"
+        },
+        {
+            name: "Timetravels",
+            logoUrl: "https://www.esn.pl/sites/default/files/styles/partner_page/public/partners/images/timetravels-logo-box.png?itok=yEWaFFa6",
+            link: "https://www.esn.pl/en/partners/timetravels"
+        },
+        , {
+            name: "International Relations Offices Forum",
+            logoUrl: "https://www.esn.pl/sites/default/files/styles/partner_page/public/partners/images/iros_logo.jpg?itok=30TORVPk",
+            link: "https://www.esn.pl/en/partners/international-relations-offices-forum"
+        },
+        {
+            name: "Fundacja Rozwoju Systemu Edukacji",
+            logoUrl: "https://www.esn.pl/sites/default/files/styles/partner_page/public/partners/images/logo_frse_kontra_granatowe.jpg?itok=D7bYg5uY",
+            link: "https://www.esn.pl/en/partners/fundacja-rozwoju-systemu-edukacji"
+        },
+        {
+            name: "Timetravels",
+            logoUrl: "https://www.esn.pl/sites/default/files/styles/partner_page/public/partners/images/timetravels-logo-box.png?itok=yEWaFFa6",
+            link: "https://www.esn.pl/en/partners/timetravels"
+        },
+        {
+            name: "International Relations Offices Forum",
+            logoUrl: "https://www.esn.pl/sites/default/files/styles/partner_page/public/partners/images/iros_logo.jpg?itok=30TORVPk",
+            link: "https://www.esn.pl/en/partners/international-relations-offices-forum"
+        }
+    ]
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        console.log("producing partnerts");
+        producePartners();
+    })
+
+    const findById = (name) => document.getElementById(name);
+
+    const createElement = (partner) => {
+        const el = document.createElement("img");
+        el.setAttribute("src", partner.logoUrl);
+        return el;
+    }
+
+    const producePartners = () => {
+        partners.forEach((partner) => {
+            findById("slide").appendChild(createElement(partner))
+        })
+    };
+
+
+    $(document).ready(function () {
+        $('.customer-logos').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            arrows: false,
+            dots: false,
+            pauseOnHover: false,
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 4
+                }
+            }, {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 3
+                }
+            }]
+        });
+    });
+
+
+
+</script>
+
+</html>

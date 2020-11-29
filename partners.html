@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+
+
+    <div class="logos-container">
+        <div class="customer-logos slider">
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        var partners = [
+            {
+                name: "Fundacja Rozwoju Systemu Edukacji",
+                logoUrl: "https://www.esn.pl/sites/default/files/styles/partner_page/public/partners/images/logo_frse_kontra_granatowe.jpg?itok=D7bYg5uY",
+                link: "https://www.esn.pl/en/partners/fundacja-rozwoju-systemu-edukacji"
+            },
+            {
+                name: "Timetravels",
+                logoUrl: "https://www.esn.pl/sites/default/files/styles/partner_page/public/partners/images/timetravels-logo-box.png?itok=yEWaFFa6",
+                link: "https://www.esn.pl/en/partners/timetravels"
+            },
+            {
+                name: "International Relations Offices Forum",
+                logoUrl: "https://www.esn.pl/sites/default/files/styles/partner_page/public/partners/images/iros_logo.jpg?itok=30TORVPk",
+                link: "https://www.esn.pl/en/partners/international-relations-offices-forum"
+            },
+
+            {
+                name: "Pepe Housing",
+                logoUrl: "https://www.esn.pl/sites/default/files/styles/partner_page/public/partners/images/pephousing_0.png?itok=Jf3ehy-S",
+                link: "https://www.esn.pl/en/partners/pepe-housing"
+            },
+
+            {
+                name: "Europejska Akademia Dyplomacji",
+                logoUrl: "https://www.esn.pl/sites/default/files/styles/partner_page/public/partners/images/ead.jpg?itok=bxPQbK_6",
+                link: "https://www.esn.pl/en/partners/europejska-akademia-dyplomacji"
+            },
+
+            {
+                name: "British Council",
+                logoUrl: "https://www.esn.pl/sites/default/files/styles/partner_page/public/partners/images/britishcouncil_logo_indigo_rgb.png?itok=dT-ep3Bx",
+                link: "https://www.esn.pl/en/partners/british-council"
+            },
+
+        ]
+
+        $(document).ready(function () {
+            const duplicatedPartners = [...partners, ...partners];
+            duplicatedPartners.forEach((partner) => {
+                $(".customer-logos").append(`
+                <div class="slide">
+                    <a href="${partner.link}">
+                <img
+                    style={height: 100px !important}
+                    src="${partner.logoUrl}">
+                    </a>
+                </div>
+                `);
+            })
+        });
+
+
+        $(document).ready(function () {
+            $('.customer-logos').slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 1500,
+                arrows: false,
+                dots: false,
+                pauseOnHover: true,
+                infinite: true,
+                responsive: [{
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                }, {
+                    breakpoint: 520,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                }]
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
